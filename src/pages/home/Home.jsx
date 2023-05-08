@@ -4,6 +4,7 @@ import Header from "../../components/header/Header";
 import HeroBanner from "./heroBanner/HeroBanner";
 import Trending from "./trending/Trending";
 import Popular from "./popular/Popular";
+import TopRated from "./topRated/TopRated";
 import Footer from "../../components/footer/Footer";
 
 const Home = () => {
@@ -14,8 +15,8 @@ const Home = () => {
         <HeroBanner />
         <Trending />
         <Popular />
+        <TopRated />
       </div>
-      <div style={{ height: 1000 }}></div>
       <Footer />
     </Fragment>
   );
