@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import { fetchDataFromApi } from "./utils/api";
 import { RouterProvider } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getApiConfiguration } from "./store/action-slice/home-slice";
+import {
+  getApiConfiguration,
+  getGenres,
+} from "./store/action-slice/home-slice";
 import router from "./routes/Routes";
 
 const App = () => {
@@ -25,8 +28,27 @@ const App = () => {
     });
   };
 
+  const genresCall = async () => {
+    let promises = [];
+    let endpoints = ["tv", "movie"];
+    let allGenres = {};
+
+    endpoints.forEach((url) => {
+      promises.push(fetchDataFromApi(`/genre/${url}/list`));
+    });
+
+    const data = await Promise.all(promises);
+    // console.log(data);
+    data.map(({ genres }) => {
+      return genres.map((item) => (allGenres[item.id] = item));
+    });
+
+    dispatch(getGenres(allGenres));
+  };
+
   useEffect(() => {
     fetchApiConfig();
+    genresCall();
   }, []);
 
   return <RouterProvider router={router}></RouterProvider>;
