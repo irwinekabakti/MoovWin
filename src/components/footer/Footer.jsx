@@ -1,9 +1,4 @@
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaLinkedin,
-} from "react-icons/fa";
+import { FaDiscord, FaInstagram, FaGithub, FaLinkedin } from "react-icons/fa";
 
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 import "./Footer.scss";
@@ -29,13 +24,13 @@ const Footer = () => {
         </div>
         <div className="socialIcons">
           <span className="icon">
-            <FaFacebookF />
+            <FaDiscord />
           </span>
           <span className="icon">
             <FaInstagram />
           </span>
           <span className="icon">
-            <FaTwitter />
+            <FaGithub />
           </span>
           <span className="icon">
             <FaLinkedin />
